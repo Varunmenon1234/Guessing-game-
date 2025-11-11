@@ -1,0 +1,28 @@
+Explanation of Random Number Generation Lines in C
+
+1. srand(time(NULL));
+This line sets (or seeds) the random number generator.
+- time(NULL) returns the current time in seconds, which is always changing.
+- Using that value ensures that the sequence of random numbers generated will be different every time the program is run.
+If srand() is not used, rand() will generate the same sequence of numbers each time the program runs.
+Think of srand() as shuffling a deck before drawing cards.
+
+2. random = (rand() % 100) + 1;
+This line generates a random number between 1 and 100.
+- rand() gives a large random number.
+- % 100 reduces that number to the range 0 to 99.
+- + 1 shifts the range to 1 to 100.
+So the result is a properly generated random number from 1 to 100.
+
+Original Line vs Corrected Line:
+Original (Incorrect):
+    random = rand() * 100 + 1;
+This produces a very large number and does NOT limit the output to between 1 and 100.
+
+Correct (Recommended):
+    random = (rand() % 100) + 1;
+This ensures the number is always in the correct range.
+
+Summary:
+- srand(time(NULL)) ensures randomness varies between program runs.
+- (rand() % 100) + 1 correctly defines the random number range.
